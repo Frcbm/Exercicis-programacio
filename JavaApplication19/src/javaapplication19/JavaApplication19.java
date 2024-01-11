@@ -12,7 +12,7 @@ public class JavaApplication19 {
             String userName = sc.nextLine();
             System.out.println("Introduce la password");
             String password = sc.nextLine();
-                datosCorrectos = login(userName, password) ? true: false;
+            datosCorrectos = login(userName, password) ? true: false;
             if(datosCorrectos){
             //if(login(userName, password)){
                 System.out.println("Datos correctos");
