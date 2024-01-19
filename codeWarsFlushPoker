@@ -1,0 +1,35 @@
+public class Kata{
+  public static boolean CheckIfFlush(String[] cards){
+      boolean flush = true;
+      if(cards[0].contains("S")){
+        for (int i = 1 ; i < cards.length && flush ; i++){
+            if(!cards[i].contains("S")){
+              flush = false;
+            }
+        }
+      }
+      else if(cards[0].contains("D")){
+        for (int i = 1 ; i < cards.length && flush ; i++){
+            if(!cards[i].contains("D")){
+              flush = false;
+            }
+        }
+      }
+      else if(cards[0].contains("C")){
+        for (int i = 1 ; i < cards.length && flush ; i++){
+            if(!cards[i].contains("C")){
+              flush = false;
+            }
+        }
+      }
+      else if(cards[0].contains("H")){
+        for (int i = 1 ; i < cards.length && flush ; i++){
+            if(!cards[i].contains("H")){
+              flush = false;
+            }
+        }
+      }
+      return flush; 
+  }
+}
+
