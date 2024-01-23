@@ -8,12 +8,13 @@ public class Snail {
         }
       
         int arr[] = new int[array.length * array[0].length];// el array que estamos rellenando tendra una longitud de todas las posiciones dentro del array bidimensional
-        int filas = 0;//esta variable nos permitira controlar la posicion en que nos encotnramos
-        int longitud = arr.length/2;// esta variable nos permitre controlar el numero de giros que tenemos que dar
-        int contador = 0;// esta variable nos permitira llevar la cuenta del indice del array que estamos rellenando
-        if(arr.length % 2 != 0){
-            longitud++;
+        int filas = 0;//esta variable nos permitira controlar la posicion en que nos encomtramos
+        int longitud = 1;//esta variable nos permitirá saber cuantos giros necesita para llegar al centro
+        for(int i = 0 ; i < array.length ; i++){
+          longitud+=2;
         }
+        int contador = 0;// esta variable nos permitira llevar la cuenta del indice del array que estamos rellenando
+        
         /*La lógica es la siguiente: el patrón es que tras cada rotación par(teniendo en cuenta que empezamos por 0 y contamos 0 como par)
         la cantidad de casillas que recorremos se reduce en 1, para eso utilizamos la variable filas*/
         for(int i = 0; i <= longitud ; i++){
