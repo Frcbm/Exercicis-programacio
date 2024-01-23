@@ -1,0 +1,54 @@
+public class Snail {
+
+    public static int[] snail(int[][] array) {
+        
+        if(array.length == 0|| array == null || array[0].length == 0){
+          int[] arr = new int[0];
+          return arr;
+        }
+      
+        int arr[] = new int[array.length * array[0].length];// el array que estamos rellenando tendra una longitud de todas las posiciones dentro del array bidimensional
+        int filas = 0;//esta variable nos permitira controlar la posicion en que nos encotnramos
+        int longitud = arr.length/2;// esta variable nos permitre controlar el numero de giros que tenemos que dar
+        int contador = 0;// esta variable nos permitira llevar la cuenta del indice del array que estamos rellenando
+        if(arr.length % 2 != 0){
+            longitud++;
+        }
+        /*La lógica es la siguiente: el patrón es que tras cada rotación par(teniendo en cuenta que empezamos por 0 y contamos 0 como par)
+        la cantidad de casillas que recorremos se reduce en 1, para eso utilizamos la variable filas*/
+        for(int i = 0; i <= longitud ; i++){
+            /*El problema esta en que cada vez  que volvemos a una misma posición la variable filas habra aumentado en 2, sin embargo, por el lado
+            en que nos encontramos nosotros solo lo habrá hecho en 1, por eso jugaremos con la variable filas dividiendola entre 2 para tener en cuenta
+            las casillas ocupadas en el otro lado de la matriz*/
+            if (i % 2 == 0){
+                if(i % 4 == 0){//filas de arriba
+                    for (int j = filas/2 ; j < array.length - (filas/2) ; j++){//filas/2 en rotaciones(1 = 0, 2 = 1, 3 = 2)
+                        arr[contador] = array[filas/2][j];
+                        contador++;
+                    }
+                    
+                } else {//filas de abajo
+                    for(int j = array.length - (filas + 1) /2 -1; j >= filas/2 ; j--){
+                        arr[contador] = array[array.length - (filas/2) - 1][j];
+                        contador++;
+                    }
+                }
+                filas++;
+
+            } else {
+                if((i-1) % 4 == 0){//columnas de la derecha
+                    for (int j = (filas + 1)/2 ; j <= array.length - (filas + 1)/2  ; j++){
+                        arr[contador] = array[j][array.length - (filas + 1)/2];
+                        contador++;
+                    }
+                } else {//columnas de la izquierda
+                    for(int j = array.length - filas /2 - 1 ; j > filas/2 - 1; j--){
+                        arr[contador] = array[j][filas/2 - 1];
+                        contador++;
+                    }
+                }
+            }
+        }
+      return arr;
+   } 
+}
