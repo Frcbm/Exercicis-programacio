@@ -1,0 +1,56 @@
+package javaapplication56;
+
+public class JavaApplication56 {
+
+    public static void main(String[] args) {
+        String[] listField ={"$->     ",
+            "     <-P"};
+        
+        int vKL = 0;
+        int vKR = 2;
+        int pKL = 0;
+        int pKR = listField[1].length() - 1;
+        String finalList[] = new String[2];
+        while(!choque(pKL, pKR)){
+            pKL += vKL;
+            pKR -= vKR;
+        }
+        if(pKR < 0){
+            pKR = 3;
+        }
+        for(int i = 0 ; i < listField.length ; i++){
+            StringBuilder sb = new StringBuilder();
+
+            if(i < 1){
+                
+                for(int j = 0 ; j < listField[i].length() ; j++){
+                    if(j == pKL){
+                        sb.append("$->");
+                        j += 2;
+                    }
+                    else{
+                        sb.append(" ");
+                    }
+                }
+            } else {
+                for(int j = 0 ; j < listField[i].length() ; j++){
+                    if(j == pKR - 2){
+                        sb.append("<-P");
+                        j += 2;
+                    }
+                    else{
+                        sb.append(" ");
+                    }
+                }
+            }
+
+            finalList[i] = sb.toString();
+            System.out.println(finalList[i]);
+        }
+        System.out.println(pKL);
+        System.out.println(pKR);
+    }
+    static boolean choque(int pKL, int pKR){
+        return pKL >= pKR;
+    }
+}
