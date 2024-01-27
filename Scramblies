@@ -1,0 +1,61 @@
+import java.util.HashMap;
+import java.util.Map;
+public class Scramblies {
+    
+    public static boolean scramble(String str1, String str2) {    
+        HashMap <Character, Integer> hm1 = new HashMap<Character,Integer>();
+        HashMap <Character, Integer> hm2 = new HashMap<Character,Integer>();
+        for(char c : str1.toCharArray()){
+            /*c es el caracter en cuestion, getOrDefault devuelve el valor del caracter en cuestión, y en caso de ser null lo pone en 0.
+            Por tanto, si ese caracter no estaba inscrito en nuestro HashMap inicializaremos su valor en 0 + 1, en caso de no ser null,
+            tomaremos su valor y le sumaremos 1. Por tanto, nuestra "clave primaria" o "key", será la letra, y el valor el numero de veces
+            que esta se repite*/
+            hm1.put(c, hm1.getOrDefault(c, 0) + 1);
+        }                                            
+        for(char c : str2.toCharArray()){
+            hm2.put(c, hm2.getOrDefault(c, 0) + 1);
+        }
+        for(Map.Entry<Character, Integer> entrada : hm2.entrySet()){
+            /*Con esta formula usaremos un for-each para recorrer el HashMap del segundo string(importante decir que para usarlo
+              debemos importa java.util.Map)y compararlo con el primero.
+            Como vamos a hacerlo a partir de iterar el hashmap del segundo string, vamos primero a comprobar primero que 
+            la entrada del 2 hashmap que estamos comprobando existe en el primer hashmap. También vamos a comprobar
+            si el valor de la clave que estamos iterando es menor en el primer hashmap que en el segundo
+            (explico mejor esto al final)*/
+            if(!hm1.containsKey((entrada.getKey())) || hm1.get(entrada.getKey()) < entrada.getValue()){
+                return false;
+            }
+        }
+        return true;
+    }
+}
+/*Para los string strings 
+        String str1 = "scriptsjava";
+        String str2 = "javascripts";
+Los hashmaps tendrían los valores siguientes:
+HashMap 1
+Clave: p valor: 1
+Clave: a valor: 2
+Clave: r valor: 1
+Clave: s valor: 2
+Clave: c valor: 1
+Clave: t valor: 1
+Clave: v valor: 1
+Clave: i valor: 1
+Clave: j valor: 1
+
+HashMap 2
+Clave: p valor: 1
+Clave: a valor: 2
+Clave: r valor: 1
+Clave: s valor: 2
+Clave: c valor: 1
+Clave: t valor: 1
+Clave: v valor: 1
+Clave: i valor: 1
+Clave: j valor: 1
+Por tanto con el ultimo for-each iteraremos cada una de las entradas existentes en el segundo hashmap.
+Comprobaremos si esta entrada existe también en el otro HashMap, y comparamos los valores, 
+si el valor en el primer HashMap es inferior al del segundo, o el primero no contiene la entrada del segundo
+devolveremos false
+*/
