@@ -77,7 +77,7 @@ public class Connect4 {
     static boolean ganador(String board[][]){                                   //esta función nos servirá para determinar si se ha dado o no un ganador
         for(int i = 0; i < board.length; i++){
             for (int j = 0; j < board[i].length ; j++){
-                /*if(j < 4){
+                if(j < 4){
                     if(victoria(board[i][j], board[i][j + 1], board[i][j + 2], board[i][j + 3]) //comprobamos filas
                             && casillaOcupada(board, i, j)){
                         return true;
@@ -100,7 +100,7 @@ public class Connect4 {
                             && casillaOcupada(board, i, j)){
                         return true;
                     }
-                }*/
+                }
                 if(empate(board)){
                     return true;
                 }
