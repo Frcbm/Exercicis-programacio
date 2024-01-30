@@ -1,4 +1,4 @@
-package connect.pkg4;
+package connect4;
 import java.util.Scanner;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -43,6 +43,10 @@ public class Connect4 {
             System.out.println(jugador1 ? "Turno de " + nombre1 : "Turno de " + nombre2);                       //Imprimimos el jugador que tiene el turno
             System.out.println("Escribe la letra de la columna donde quieres colocar la letra:");             //Damos instrucciones sobre lo que hay que hacer
             String respuesta = sc.nextLine().toUpperCase().trim();                                              //El jugador nos indica en que columna quiere jugar
+            while(!respuesta.matches("[A-G]")){
+                System.out.println("Esa no es una opcion valida. Selecciona una opcion valida");
+                respuesta = sc.nextLine().toUpperCase().trim();
+            }
             int casilla = board.length - 1;                                                                     //Comprobamos si la columna existe, y en ese caso
             Integer res = conversion.get(respuesta);                                                         //si estuviera llena, en ese caso daremos un
             while(casillaOcupada(board, casilla, res)){                                                     //mensaje de error y pediremos que nos introduzca una columna valida
@@ -51,11 +55,12 @@ public class Connect4 {
                     break;
                 }
             }
-            while(!respuesta.matches("[A-G]")|| casilla < 0){                                               
+            while(!respuesta.matches("[A-G]") || casilla < 0){                                               
                 System.out.println("Esa no es una opcion valida. Selecciona una opcion valida");
                 respuesta = sc.nextLine().toUpperCase().trim();
                 casilla = board.length - 1;
                 res = conversion.get(respuesta);
+                if(respuesta.matches("[A-G]"))
                 while(casillaOcupada(board, casilla, res)){
                     casilla--;
                     if(casilla < 0){
