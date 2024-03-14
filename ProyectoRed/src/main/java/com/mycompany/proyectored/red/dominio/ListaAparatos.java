@@ -10,25 +10,38 @@ public class ListaAparatos {
     }
     public void addToList(Aparato aparato){
         listaAparatos.add(aparato);
-        setTotalConsumo(aparato.getConsumo());
+        setTotalConsumo();
     }
-    public double getTotalConsumo(){
-        return this.totalConsumo;
+    
+    public double getTotalConsumo() {
+        double total = 0;
+        for (Aparato aparato : listaAparatos) {
+            if (aparato.getStatus()) {
+                total += aparato.getConsumo();
+            }
+        }
+        return total;
     }
+        
     public void getListaAparatos(){
-        for(int i = 0 ; i < listaAparatos.size() ; i++){
-            System.out.println(listaAparatos.get(i));
+        for(Aparato aparato : listaAparatos){
+            System.out.println(aparato);
         }
     }
-    public void setTotalConsumo(double consumo){
-        this.totalConsumo += consumo;
+    public void setTotalConsumo(){
+        this.totalConsumo = 0;
+        for(int i = 0 ; i < listaAparatos.size(); i++){
+            if(!listaAparatos.get(i).getStatus()){
+                this.totalConsumo += listaAparatos.get(i).getConsumo();
+            }
+        }
+      
     }
     public void apagadoDeEmergencia(){
-        if(totalConsumo > 400){
-            for(int i = 0 ; i < listaAparatos.size() ; i++){
-                if(listaAparatos.get(i).getStatus() == true){
-                    listaAparatos.get(i).apagar();
-                }
+        setTotalConsumo();
+        if(this.totalConsumo > 400){
+            for(Aparato aparato : this.listaAparatos){
+                aparato.apagar();
             }
         }
     }

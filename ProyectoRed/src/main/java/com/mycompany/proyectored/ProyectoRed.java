@@ -15,9 +15,12 @@ public class ProyectoRed {
         listaAparatos.addToList(tele);
         listaAparatos.addToList(lavavajillas);
         
-        System.out.println("Tele: " + tele.toString() + "\n" + "lavavajillas: " + lavavajillas.toString());
-        listaAparatos.apagadoDeEmergencia();
         System.out.println(listaAparatos.getTotalConsumo());
         System.out.println("Tele: " + tele.toString() + "\n" + "lavavajillas: " + lavavajillas.toString());
+        listaAparatos.getListaAparatos();
+        listaAparatos.apagadoDeEmergencia();
+        System.out.println(listaAparatos.getTotalConsumo());
+        System.out.println("Tele: " + tele.getStatus() + "\n" + "lavavajillas: " + lavavajillas.toString());
+        System.out.println(listaAparatos.getTotalConsumo());
     }
 }

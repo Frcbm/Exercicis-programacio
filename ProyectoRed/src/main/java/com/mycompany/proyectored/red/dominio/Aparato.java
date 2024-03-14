@@ -1,5 +1,6 @@
 package com.mycompany.proyectored.red.dominio;
 
+
 public class Aparato {
     
     private final double consumo;
@@ -8,6 +9,7 @@ public class Aparato {
     public Aparato(double consumo){
         this.status = false;
         this.consumo = consumo;
+        
     }
     
     public double getConsumo(){
